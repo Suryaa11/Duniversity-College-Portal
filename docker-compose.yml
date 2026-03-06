@@ -19,7 +19,7 @@ services:
     networks:
       - university-network
     volumes:
-      - university-volume:data/db
+      - university-volume:/data/db
     env_file:
       - .env
 
