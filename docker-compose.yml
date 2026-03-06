@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  front-end:
+    image: suryaa112003/duniversity:tagname
+    container_name: frontend-cont 
+    ports:
+      - "82:3000"
+    env_file:
+      - .env
+    networks:
+      - university-network
+  
+  backend-cont:
+    image: mariadb:12.3.1-ubi10-rc
+    container_name: mariadb
+    ports:
+      - "3306:3306"
+    networks:
+      - university-network
+    volumes:
+      - university-volume:data/db
+
+volumes:
+  university-volume:
+networks:
+  university-network:
+
+  
