@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   front-end:
-    image: suryaa112003/duniversity:tagname
+    image: suryaa112003/duniversity:v1.1.0
     container_name: frontend-cont 
     ports:
       - "82:3000"
