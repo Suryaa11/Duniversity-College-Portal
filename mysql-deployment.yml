@@ -46,16 +46,21 @@ spec:
             #     secretKeyRef:
             #       name: university-secret
             #       key:  DB_PASSWORD
-            - name: DB_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: university-config
-                  key: DB_HOST
-            - name: DB_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: university-config
-                  key: DB_PORT
+            # - name: DB_HOST
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: university-config
+            #       key: DB_HOST
+            # - name: DB_PORT
+            #   valueFrom:
+            #     configMapKeyRef:
+            #       name: university-config
+            #       key: DB_PORT
+            envFrom:
+            - configMapRef:
+                name: university-config
+            - secretRef:
+                name: university-secret
           volumeMounts:
             - name: mysql-volume
               mountPath: /var/lib/mysql
