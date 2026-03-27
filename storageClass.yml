@@ -1,0 +1,9 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: university-storage
+provisioner: nfs.csi.k8s.io
+parameters:
+  server: 10.0.1.249
+  path: /var/nfs/general/university-data
+  readOnly: "false"

@@ -1,0 +1,66 @@
+apiVersion: apps/ v1
+kind: Deployment
+metadata: 
+  name: university-deploy
+  namespace: fitness-ns
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: university
+  template:
+    metadata:
+      labels:
+        app: university
+    spec:
+      containers:
+        - name: university-cont
+          image: suryaa112003/duniversity:v1.1.0
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "200m"
+              memory: "512Mi"
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: university-config
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: university-config
+                  key: DB_PORT
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: university-secret
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:  
+                secretKeyRef:
+                  name: university-secret
+                  key: DB_PASSWORD
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: university-service
+  namespace: fitness-ns
+spec:
+  selector:
+    app: university
+  ports:
+    - port: 3001
+      targetPort: 3000
+  type: NodePort
