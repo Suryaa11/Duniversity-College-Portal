@@ -26,6 +26,12 @@ spec:
       containers:
         - name: university-cont
           image: suryaa112003/duniversity:v1.1.0
+              command: ["sh", "-c"]
+          args:
+            - |
+              echo "Waiting for MySQL...";
+              sleep 15;
+              node server.js
           ports:
             - containerPort: 3000
           resources:
