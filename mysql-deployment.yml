@@ -52,7 +52,7 @@ spec:
       volumes:
         - name: mysql-volume
           persistentVolumeClaim:
-            claimName: university-claim
+            claimName: university-pvc
 ---
 apiVersion: v1
 kind: Service
