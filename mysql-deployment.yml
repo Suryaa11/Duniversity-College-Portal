@@ -30,7 +30,7 @@ spec:
             limits:
               cpu: "200m"
               memory: "512Mi"
-          env:
+          #env:
             # - name: MYSQL_ROOT_PASSWORD
             #   valueFrom:
             #     secretKeyRef:
