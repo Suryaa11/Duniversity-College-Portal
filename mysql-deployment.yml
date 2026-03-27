@@ -35,7 +35,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: university-secret
-                  key: MARIADB_ROOT_PASSWORD
+                  key: MYSQL_ROOT_PASSWORD
             - name: DB_USER
               valueFrom:
                 secretKeyRef:
