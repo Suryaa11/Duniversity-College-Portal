@@ -4,7 +4,7 @@ metadata:
   name: university-config
   namespace: fitness-ns
 data:
-  DB_HOST: "mysql-service"
+  DB_HOST: "10.108.48.136"
   DB_PORT: "3306"
   GRIEVANCE_DB: "grievance_db"
   LEAVE_DB: "leave_db"
