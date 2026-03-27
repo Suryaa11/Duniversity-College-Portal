@@ -30,37 +30,32 @@ spec:
             limits:
               cpu: "200m"
               memory: "512Mi"
-          envFrom:
-            - configMapRef:
-                name: university-config
-            - secretRef:
-                name: university-secret
-          # env:
-          #   - name: MYSQL_ROOT_PASSWORD
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: university-secret
-          #         key: MARIADB_ROOT_PASSWORD
-          #   - name: DB_USER
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: university-secret
-          #         key: DB_USER
-          #   - name: DB_PASSWORD
-          #     valueFrom:
-          #       secretKeyRef:
-          #         name: university-secret
-          #         key:  DB_PASSWORD
-          #   - name: DB_HOST
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: university-config
-          #         key: DB_HOST
-          #   - name: DB_PORT
-          #     valueFrom:
-          #       configMapKeyRef:
-          #         name: university-config
-          #         key: DB_PORT
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: university-secret
+                  key: MARIADB_ROOT_PASSWORD
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: university-secret
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: university-secret
+                  key:  DB_PASSWORD
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: university-config
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: university-config
+                  key: DB_PORT
           volumeMounts:
             - name: mysql-volume
               mountPath: /var/lib/mysql
