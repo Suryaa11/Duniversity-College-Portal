@@ -30,6 +30,11 @@ spec:
             limits:
               cpu: "200m"
               memory: "512Mi"
+          envFrom:
+            - configMapRef:
+                name: university-config
+            - secretRef:
+                name: university-secret
           #env:
             # - name: MYSQL_ROOT_PASSWORD
             #   valueFrom:
@@ -56,11 +61,6 @@ spec:
             #     configMapKeyRef:
             #       name: university-config
             #       key: DB_PORT
-            envFrom:
-            - configMapRef:
-                name: university-config
-            - secretRef:
-                name: university-secret
           volumeMounts:
             - name: mysql-volume
               mountPath: /var/lib/mysql
