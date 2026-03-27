@@ -4,5 +4,5 @@ metadata:
   name: university-config
   namespace: fitness-ns
 data:
-  DB_HOST: "mariadb"
+  DB_HOST: "mysql-service"
   DB_PORT: "3306"
