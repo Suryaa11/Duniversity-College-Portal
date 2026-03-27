@@ -18,6 +18,11 @@ spec:
       labels:
         app: university
     spec:
+      dnsPolicy: ClusterFirst
+      dnsConfig:
+        options:
+          - name: ndots
+            value: "1"
       containers:
         - name: university-cont
           image: suryaa112003/duniversity:v1.1.0
