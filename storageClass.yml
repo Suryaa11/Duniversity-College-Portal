@@ -6,4 +6,3 @@ provisioner: nfs.csi.k8s.io
 parameters:
   server: 10.0.1.249
   share: /var/nfs/general/university-data
-reclaimPolicy: Delete
