@@ -18,20 +18,9 @@ spec:
       labels:
         app: university
     spec:
-      dnsPolicy: ClusterFirst
-      dnsConfig:
-        options:
-          - name: ndots
-            value: "1"
       containers:
         - name: university-cont
           image: suryaa112003/duniversity:v1.1.0
-          command: ["sh", "-c"]
-          args:
-            - |
-              echo "Waiting for MySQL...";
-              sleep 25;
-              node server.js
           ports:
             - containerPort: 3000
           resources:
