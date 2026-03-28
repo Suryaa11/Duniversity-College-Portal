@@ -9,7 +9,7 @@ spec:
   selector:
     matchLabels:
       app: mysql
-  strategy:
+  updateStrategy:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
