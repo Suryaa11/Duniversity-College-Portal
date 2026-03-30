@@ -19,5 +19,5 @@ spec:
               replacePrefixMatch: /
       backendRefs:
         - name: university-service
-          port: 80
+          port: 3001
           
