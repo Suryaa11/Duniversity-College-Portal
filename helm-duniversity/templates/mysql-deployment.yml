@@ -76,7 +76,7 @@ spec:
     - metadata:
         name: {{ .Values.backend.vct.name }}
       spec:
-        accessModes: {{ .Values.backend.vct.accessModes }}
+        accessModes: ["ReadWriteMany"]
         storageClassName: {{ .Values.backend.storageClass.name }}
         resources:
           requests:

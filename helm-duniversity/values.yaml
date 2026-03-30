@@ -25,7 +25,6 @@ backend:
     memory: "512Mi"
   vct:
     name: mysql-volume
-    accessModes: ["ReadWriteMany"]
     storage: 5Gi
 
 storageClass:
