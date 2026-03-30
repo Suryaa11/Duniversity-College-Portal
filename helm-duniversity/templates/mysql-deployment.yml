@@ -31,7 +31,7 @@ spec:
               memory: {{ .Values.backend.requests.memory }}
             limits:
               cpu: {{ .Values.backend.limits.cpu }}
-              memory: {{ .Values.backend.limits.cpu }}
+              memory: {{ .Values.backend.limits.memory }}
           envFrom:
             - configMapRef:
                 name: university-config
