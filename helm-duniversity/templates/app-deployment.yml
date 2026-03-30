@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata: 
-  name: {{ .Values.app.name }}
+  name: {{ .values.app.name }}
   namespace: fitness-ns
 spec:
   replicas: {{ .Values.replicaCount }}
