@@ -1,7 +1,7 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
-  name: fitness-route
+  name: university-route
   namespace: fitness-ns
 spec:
   parentRefs:
@@ -10,7 +10,7 @@ spec:
     - matches:
         - path:
             type: PathPrefix
-            value: /fitness
+            value: /
       filters:
         - type: URLRewrite
           urlRewrite:
@@ -18,6 +18,6 @@ spec:
               type: ReplacePrefixMatch
               replacePrefixMatch: /
       backendRefs:
-        - name: fitness-tracker-service
+        - name: university-service
           port: 80
           
