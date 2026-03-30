@@ -66,6 +66,6 @@ spec:
   selector:
     app: university
   ports:
-    - port: 3001
-      targetPort: 3000
+    - port: {{ .Values.port }}
+      targetPort: {{ .Values.containerPort }}
   type: ClusterIP

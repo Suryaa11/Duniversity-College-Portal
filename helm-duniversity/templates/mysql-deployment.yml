@@ -4,8 +4,8 @@ metadata:
   name: mysql-stateful
   namespace: fitness-ns
 spec:
-  replicas: 1
-  minReadySeconds: 10
+  replicas: {{ .Values.backend.replicaCount }}
+  minReadySeconds: {{ .Values.backend.minReadySeconds }}
   selector:
     matchLabels:
       app: mysql
@@ -19,19 +19,19 @@ spec:
       labels:
         app: mysql
     spec:
-      terminationGracePeriodSeconds: 10
+      terminationGracePeriodSeconds: {{ .Values.backend.terminationGracePeriodSeconds }}
       containers:
         - name: mysql-cont
           image: mysql
           ports:
-            - containerPort: 3306
+            - containerPort: {{ .Values.backend.containerPort }}
           resources:
             requests:
-              cpu: "100m"
-              memory: "256Mi"
+              cpu: {{ .Values.backend.requests.cpu }}
+              memory: {{ .Values.backend.requests.memory }}
             limits:
-              cpu: "200m"
-              memory: "512Mi"
+              cpu: {{ .Values.backend.limits.cpu }}
+              memory: {{ .Values.backend.limits.cpu }}
           envFrom:
             - configMapRef:
                 name: university-config
@@ -64,7 +64,7 @@ spec:
             #       name: university-config
             #       key: DB_PORT
           volumeMounts:
-            - name: mysql-volume
+            - name: {{ .Values.backend.vct.name }}
               mountPath: /var/lib/mysql
             - name: mysql-init
               mountPath: /docker-entrypoint-initdb.d
@@ -74,13 +74,13 @@ spec:
             name: mysql-config
   volumeClaimTemplates:
     - metadata:
-        name: mysql-volume
+        name: {{ .Values.backend.vct.name }}
       spec:
-        accessModes: ["ReadWriteMany"]
-        storageClassName: university-storage
+        accessModes: {{ .Values.backend.vct.accessModes }}
+        storageClassName: {{ .Values.backend.storageClass.name }}
         resources:
           requests:
-            storage: 5Gi
+            storage: {{ .Values.backend.vct.storage }}
           
 ---
 apiVersion: v1
@@ -92,7 +92,7 @@ spec:
   selector:
     app: mysql
   ports:
-    - port: 3306
-      targetPort: 3306
+    - port: {{ .Values.backend.port}}
+      targetPort: {{ .Values.backend.containerPort }}
   clusterIP: None
 

@@ -8,3 +8,29 @@ image:
   tag: v1.1.0
 
 containerPort: 3000
+port: 3001
+
+# Backend Deployment
+backend:
+  replicaCount: 2
+  minReadySeconds: 10
+  terminationGracePeriodSeconds: 10
+  containerPort: 3306
+  port: 3306
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+  limits:
+    cpu: "200m"
+    memory: "512Mi"
+  vct:
+    name: mysql-volume
+    accessModes: ["ReadWriteMany"]
+    storage: 5Gi
+
+storageClass:
+  name: university-storage
+  provisioner: nfs.csi.k8s.io
+  server: 10.0.1.249
+  share: /var/nfs/general/university-data
+

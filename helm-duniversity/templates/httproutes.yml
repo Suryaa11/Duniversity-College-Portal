@@ -19,5 +19,5 @@ spec:
               replacePrefixMatch: /
       backendRefs:
         - name: university-service
-          port: 3001
+          port: {{ .Values.port }}
           
