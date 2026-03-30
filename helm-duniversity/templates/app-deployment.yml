@@ -22,7 +22,7 @@ spec:
         - name: university-cont
           image: {{ .Values.image.repository }}: {{ .Values.image.tag}}
           ports:
-            - containerPort: {{ .Values.containerPort}}
+            - containerPort: {{ .Values.containerPort }}
           resources:
             requests:
               cpu: "100m"
