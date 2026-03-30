@@ -1,0 +1,10 @@
+app: 
+  name: university-deploy
+
+replicaCount: 2
+
+image: 
+  repository: suryaa112003/duniversity
+  tag: v1.1.0
+
+containerPort: 3000
