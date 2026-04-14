@@ -26,7 +26,7 @@ spec:
             - bash
             - "-c"
             - |
-              if [[ $(hostname) == "mysql-stateful-0" ]]; then
+              if [[ "$HOSTNAME" == "mysql-stateful-0" ]]; then
                 echo "I am PRIMARY"
                 cp /etc/mysql/repl/primary.cnf /etc/mysql/conf.d/
               else
