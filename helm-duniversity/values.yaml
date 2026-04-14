@@ -30,6 +30,6 @@ backend:
 storageClass:
   name: university-storage
   provisioner: nfs.csi.k8s.io
-  server: 10.0.1.249
+  server: 10.0.1.42
   share: /var/nfs/general/university-data
 
